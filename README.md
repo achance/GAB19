@@ -20,14 +20,14 @@ Log Analytics demo for Global Azure Bootcamp 2019
 
 ![Create a Workspace 2] [Create2]
 
-[Create2]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateWorkspace2.PNG?raw=true "Create a Workspace"
+[Create2]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateWorkspace2.PNG?raw=true "Create a Workspace 2"
 
 6. Wait a few moments for the creation to complete. You can track the status through the notifications. 
 7. Once the setup is complete, select your newly created workspace.
 
 ![Create a Workspace 3] [Create3]
 
-[Create3]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateWorkspace3.PNG?raw=true "Create a Workspace"
+[Create3]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateWorkspace3.PNG?raw=true "Create a Workspace 3"
 
 
 
@@ -58,7 +58,7 @@ Note: Ensure you select .NET Framework option and not .NET Core to ensure compat
 
 ![Workspace] [Workspace]
 
-[Workspace]: https://github.com/achance/GAB19/blob/master/Screenshots/ShareKey.PNG?raw=true "Workspace"
+[Workspace]: https://github.com/achance/GAB19/blob/master/Screenshots/SharedKey.PNG?raw=true "Workspace"
 
 11. Replace the value for the **customerID** variable with the **WORKSPACE ID** value. 
 12. Replace the value for the **sharedKey** variable with the **PRIMARY KEY** value. 
