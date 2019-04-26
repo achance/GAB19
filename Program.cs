@@ -15,7 +15,7 @@ namespace GABLogs
         {
             
             //Write something to log
-            string result = SendLog(customerID, sharedKey, "TestLog1", @"[{""testProp"": ""testValue""}]");
+            string result = SendLog(customerID, sharedKey, "TestLog1", @"[{""testProp"": ""Error""}]");
 
             Console.WriteLine(result);
 

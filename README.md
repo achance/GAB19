@@ -67,6 +67,161 @@ Note: Ensure you select .NET Framework option and not .NET Core to ensure compat
 
 ## Query for your sample logs in Azure 
 
+To query for the logs, we will use the [Kusto Query language] (https://docs.microsoft.com/en-us/azure/kusto/query/index). 
+
+1. From the Azure Portal, ensure that you still have your workspace selected. 
+2. Select **Logs** from the menu on the left. Then expand the schema for **Custom Logs**. 
+
+![Query] [Query]
+
+[Query]: https://github.com/achance/GAB19/blob/master/Screenshots/Query.PNG?raw=true "Query"
+
+3. Query for your newly created logs using the following sample.
+
+
+```
+TestLog1_CL
+| where testProp_s != ""
+```
+
+4. Copy or enter the query into Query pane, and then click **Run**. You should see results displayed in the table similar to below.
+
+![QueryResults] [QueryResults]
+
+[QueryResults]: https://github.com/achance/GAB19/blob/master/Screenshots/QueryResults.PNG?raw=true "QueryResults"
+
+
+For a real world scenario, you will likely need to write more complex queries. A log query can also be used with Azure Monitor Alerts.
+
+Here are a few query examples:
+
+You can control what columns are presented by using the **Project** operator.
+
+```
+TestLog1_CL
+| where testProp_s != ""
+| project TimeGenerated , testProp_s ,Type
+```
+
+Filter on a custom time range.
+
+```
+TestLog1_CL
+| where testProp_s != ""
+| where TimeGenerated > ago(12h)
+| project TimeGenerated , testProp_s ,Type
+```
+
+Summarize your data with operators like **Count**
+
+```
+TestLog1_CL
+| where testProp_s != ""
+| where TimeGenerated > ago(12h)
+| count 
+
+```
+
+
+
+## Create an alert based on your logs
+
+1. With your workspace still selected, click on the **Alerts** option under **Monitoring**.
+
+![Alerts1] [Alerts1]
+
+[Alerts1]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts1.PNG?raw=true "Alerts1"
+
+
+2. Click on **New Alert Rule**.
+
+![Alerts2] [Alerts2]
+
+[Alerts2]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts2.PNG?raw=true "Alerts2"
+
+3. Under **Condition**, click **Add Condition**. For the signal type, select **Custom Log Search**. 
+
+![Alerts3] [Alerts3]
+
+[Alerts3]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts3.PNG?raw=true "Alerts3"
+
+
+4. For this example, paste the following into the **Search Query** pane. 
+
+```
+TestLog1_CL
+| where testProp_s == "Error"
+```
+
+5. Under **Alert logic**, change the **Threshold value** to **0**. Leave all the other settings at their default. 
+When finished, your setup should look similar to this:
+
+![Alerts4] [Alerts4]
+
+[Alerts4]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts4.PNG?raw=true "Alerts4"
+
+Click **Done** to complete the condition setup. 
+
+The alert requires an **Action group** to direct where the alerts will be sent to. 
+
+6. Click on **Create New** under **Action Groups**. Fill out the required info, and add an action for **Email**.
+To properly test, enter a valid email address. Click **OK** to complete the setup. 
+
+![Action Group] [Action Group]
+
+[Action Group]: https://github.com/achance/GAB19/blob/master/Screenshots/ActionGroup.PNG?raw=true "Action Group"
+
+Note: A confirmation email will be sent notifying that email address was added to the action group.
+
+7. You should now see your newly created Action Group selected. Finish the alert details. 
+
+![Action Group 2] [Action Group 2]
+
+[Action Group 2]: https://github.com/achance/GAB19/blob/master/Screenshots/ActionGroup2.PNG?raw=true "Action Group 2"
+
+
+Click **Create Alert Rule** to complete the setup. 
+
+
+
+## Test the alert with the logs program
+
+1. Open the Console app in Visual Studio and go back to the Program.cs file.
+2. Find the line of code in the main method that has the **SendLog** function.
+3. Replace the "testValue" with "Error", or copy the code below to overwrite it.
+
+```C#
+
+  string result = SendLog(customerID, sharedKey, "TestLog1", @"[{""testProp"": ""Error""}]");
+```
+
+4. Run the program again, and ensure that you see "OK" in the console output. 
+
+This should trigger the alert based on our configuration.
+
+Note: The default alert configuration had a time interval of 5 minutes. It may take 5 minutes or longer to see the alert notification depending on the timing. 
+
+We can confirm the log was written with the "Error" value by running a query.
+
+5. Navigate back to the logs workspace, and select **Logs** from the menu. 
+6. Enter the following in the query pane:
+
+```
+TestLog1_CL
+| where testProp_s == "Error"
+
+```
+
+Confirm that you see the result for your "Error" log.
+
+
+
+
+
+
+
+
+
 
 
 
