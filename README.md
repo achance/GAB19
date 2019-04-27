@@ -72,7 +72,7 @@ To query for the logs, we will use the [Kusto Query language] (https://docs.micr
 1. From the Azure Portal, ensure that you still have your workspace selected. 
 2. Select **Logs** from the menu on the left. Then expand the schema for **Custom Logs**. 
 
-![Query] [Query]
+![Query][Query]
 
 [Query]: https://github.com/achance/GAB19/blob/master/Screenshots/Query.PNG?raw=true "Query"
 
@@ -86,7 +86,7 @@ TestLog1_CL
 
 4. Copy or enter the query into Query pane, and then click **Run**. You should see results displayed in the table similar to below.
 
-![QueryResults] [QueryResults]
+![QueryResults][QueryResults]
 
 [QueryResults]: https://github.com/achance/GAB19/blob/master/Screenshots/QueryResults.PNG?raw=true "QueryResults"
 
@@ -128,20 +128,20 @@ TestLog1_CL
 
 1. With your workspace still selected, click on the **Alerts** option under **Monitoring**.
 
-![Alerts1] [Alerts1]
+![Alerts1][Alerts1]
 
 [Alerts1]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts1.PNG?raw=true "Alerts1"
 
 
 2. Click on **New Alert Rule**.
 
-![Alerts2] [Alerts2]
+![Alerts2][Alerts2]
 
 [Alerts2]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts2.PNG?raw=true "Alerts2"
 
 3. Under **Condition**, click **Add Condition**. For the signal type, select **Custom Log Search**. 
 
-![Alerts3] [Alerts3]
+![Alerts3][Alerts3]
 
 [Alerts3]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts3.PNG?raw=true "Alerts3"
 
@@ -156,7 +156,7 @@ TestLog1_CL
 5. Under **Alert logic**, change the **Threshold value** to **0**. Leave all the other settings at their default. 
 When finished, your setup should look similar to this:
 
-![Alerts4] [Alerts4]
+![Alerts4][Alerts4]
 
 [Alerts4]: https://github.com/achance/GAB19/blob/master/Screenshots/Alerts4.PNG?raw=true "Alerts4"
 
@@ -167,7 +167,7 @@ The alert requires an **Action group** to direct where the alerts will be sent t
 6. Click on **Create New** under **Action Groups**. Fill out the required info, and add an action for **Email**.
 To properly test, enter a valid email address. Click **OK** to complete the setup. 
 
-![Action Group] [Action Group]
+![Action Group][Action Group]
 
 [Action Group]: https://github.com/achance/GAB19/blob/master/Screenshots/ActionGroup.PNG?raw=true "Action Group"
 
@@ -175,7 +175,7 @@ Note: A confirmation email will be sent notifying that email address was added t
 
 7. You should now see your newly created Action Group selected. Finish the alert details. 
 
-![Action Group 2] [Action Group 2]
+![Action Group 2][Action Group 2]
 
 [Action Group 2]: https://github.com/achance/GAB19/blob/master/Screenshots/ActionGroup2.PNG?raw=true "Action Group 2"
 
