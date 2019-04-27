@@ -41,7 +41,7 @@ Note: Ensure you select .NET Framework option and not .NET Core to ensure compat
 
 ![Create Project][Create Project]
 
-[CreateProject]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateProject.PNG?raw=true "Create Project"
+[Create Project]: https://github.com/achance/GAB19/blob/master/Screenshots/CreateProject.PNG?raw=true "Create Project"
 
 4. Give your project a name. You can keep the default selections for the other options. Click **Create**.
 5. Navigate to the sample repo on [GitHub] (https://github.com/achance/GAB19). Find the **Program.cs** file.
