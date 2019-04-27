@@ -1,7 +1,3 @@
-# GAB19
-Content for the 2019 Global Azure Bootcamp
-
-
 # Leveraging Log Analytics in Custom Applications
 Log Analytics demo for Global Azure Bootcamp 2019
 
@@ -54,7 +50,7 @@ Note: Ensure you select .NET Framework option and not .NET Core to ensure compat
 
 8. Go back to the Azure Portal to get the values for your workspace. Ensure you have your Log Analytics Workspace selected. 
 9. Select **Advanced Settings** from the menu on the left. 
-10. Find the values under **Connected Sources** **-->** **Windows Servers** for **WORKSPACE ID** and PRIMARY KEY**. 
+10. Find the values under **Connected Sources** **-->** **Windows Servers** for **WORKSPACE ID** and **PRIMARY KEY**. 
 
 ![Workspace][Workspace]
 
@@ -67,16 +63,18 @@ Note: Ensure you select .NET Framework option and not .NET Core to ensure compat
 
 ## Query for your sample logs in Azure 
 
-To query for the logs, we will use the [Kusto Query language] (https://docs.microsoft.com/en-us/azure/kusto/query/index). 
+To query for the logs, we will use the [Kusto Query language](https://docs.microsoft.com/en-us/azure/kusto/query/index). 
 
 1. From the Azure Portal, ensure that you still have your workspace selected. 
-2. Select **Logs** from the menu on the left. Then expand the schema for **Custom Logs**. 
+2. Select **Logs** from the menu on the left. Then expand the schema for **Custom Logs**. You should see your newly created log type here.
+
+Note: It may take a few minutes for the change to take effect in the portal.
 
 ![Query][Query]
 
 [Query]: https://github.com/achance/GAB19/blob/master/Screenshots/Query.PNG?raw=true "Query"
 
-3. Query for your newly created logs using the following sample.
+3. Query for your newly created logs using the following sample:
 
 
 ```
@@ -103,7 +101,7 @@ TestLog1_CL
 | project TimeGenerated , testProp_s ,Type
 ```
 
-Filter on a custom time range.
+**Filter** on a custom time range.
 
 ```
 TestLog1_CL
@@ -162,7 +160,7 @@ When finished, your setup should look similar to this:
 
 Click **Done** to complete the condition setup. 
 
-The alert requires an **Action group** to direct where the alerts will be sent to. 
+Alerts requires an **Action group** to direct where the alerts will be sent to. 
 
 6. Click on **Create New** under **Action Groups**. Fill out the required info, and add an action for **Email**.
 To properly test, enter a valid email address. Click **OK** to complete the setup. 
@@ -173,7 +171,7 @@ To properly test, enter a valid email address. Click **OK** to complete the setu
 
 Note: A confirmation email will be sent notifying that email address was added to the action group.
 
-7. You should now see your newly created Action Group selected. Finish the alert details. 
+7. You should now see your newly created Action Group selected. Finish filling out the alert details. 
 
 ![Action Group 2][Action Group 2]
 
@@ -188,7 +186,7 @@ Click **Create Alert Rule** to complete the setup.
 
 1. Open the Console app in Visual Studio and go back to the Program.cs file.
 2. Find the line of code in the main method that has the **SendLog** function.
-3. Replace the "testValue" with "Error", or copy the code below to overwrite it.
+3. Replace "testValue" with "Error", or copy the code below to overwrite it.
 
 ```C#
 
@@ -199,7 +197,7 @@ Click **Create Alert Rule** to complete the setup.
 
 This should trigger the alert based on our configuration.
 
-Note: The default alert configuration had a time interval of 5 minutes. It may take 5 minutes or longer to see the alert notification depending on the timing. 
+Note: The default alert configuration has a time interval of 5 minutes. It may take 5 minutes or longer to see the alert notification depending on the timing. 
 
 We can confirm the log was written with the "Error" value by running a query.
 
